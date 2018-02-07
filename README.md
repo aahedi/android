@@ -1,5 +1,4 @@
 # android
-<base target="_blank">
-Tutorial, Tips and Trick Android Phone by: <a href="https://www.youtube.com/user/aahedi">Aahedi</a>
+Tutorial, Tips and Trick Android Phone by: <a href="https://www.youtube.com/user/aahedi" target="_blank">Aahedi</a><br>
 
-1. <a href="https://aahedi.github.io/android/whatsapp-direct-chat.html">How to send a WhatsApp chat without saving the contact</a>
+1. <a href="https://aahedi.github.io/android/whatsapp-direct-chat.html" target="_blank">How to send a WhatsApp chat without saving the contact</a>
