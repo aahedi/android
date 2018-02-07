@@ -5,11 +5,18 @@
 <h3>Whatsapp: 
 <input type='button' onclick='javascript:(function(){
 var phone = prompt("Isi nomor tujuan?", "+62 822-4017-1199");
-if (phone != null) { var a = phone;
-window.open("https://api.whatsapp.com/send?phone=" + a.match(/\d/g).join(""),"_blank")
+if (phone != null) {
+window.open("https://api.whatsapp.com/send?phone=" + retnum(phone),"_blank")
 }
 })();' value='Click' style="background:#00E676;border:none;padding:10px"/> to chat without save contact<br><br>
 <sub>*Author by: <a href="https://www.youtube.com/user/aahedi">Aahedi</a><sub>
 </h2>
+  <script>
+  function retnum(str) { 
+    var num = str.replace(/[^0-9]/g, ''); 
+    return num;
+    //str.match(/\d/g).join("")
+  }
+  </script>
 </body>
 </html>
