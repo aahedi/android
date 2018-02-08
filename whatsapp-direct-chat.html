@@ -1,22 +1,21 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Chat without save contact</title>
+<meta name='description' content='How to send a WhatsApp chat without saving the contact'>
+<meta name='author' content='Aahedi'>
 <body>
+  <h1>How to send a WhatsApp chat without saving the contact</h1>
 <h3>Whatsapp: 
 <input type='button' onclick='javascript:(function(){
 var phone = prompt("Isi nomor tujuan?", "+62 822-4017-1199");
 if (phone != null) {
-window.open("https://api.whatsapp.com/send?phone=" + retnum(phone),"_blank")
+window.open("https://api.whatsapp.com/send?phone=" + phone.match(/\d/g).join(""),"_blank")
 }
 })();' value='Click' style="background:#00E676;border:none;padding:10px"/> to chat without save contact<br><br>
 <sub>*Author by: <a href="https://www.youtube.com/user/aahedi">Aahedi</a><sub>
-</h2>
-  <script>
-  function retnum(str) { 
-    var num = str.replace(/[^0-9]/g, ''); 
-    return num;
-    //str.match(/\d/g).join("")
-  }
-  </script>
+</h3>
 </body>
 </html>
