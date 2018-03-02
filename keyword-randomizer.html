@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Keyword Randomizer by: Aahedi</title>
+<meta name='description' content='Tutorial, Tips and Trick Android Phone By Aahedi'>
+<meta name='author' content='Aahedi'>
+  <style>html,body{margin:0;padding:0;width:100%;}h1{text-align:center}
+  textarea,button{display:block;margin:auto;width:50%;}textarea{height:180px;resize:none;padding:10px;font-size:14px}
+  button{height:40px}</style>
+<body>
+<h1>Keyword Randomizer by: <a href="https://www.youtube.com/user/aahedi" target="_blank">Aahedi</a></h1>
+<textarea id="ipt" placeholder="Enter keywords separated by comma(,)"></textarea><br>
+<button id="btn">Random</button>
+<button id="btn2">Random (no comma)</button><br>
+<textarea id="opt" placeholder="The results of randomization will appear here"></textarea>
+<script>
+function shuffle(array) {
+  var currentIndex = array.length, temporaryValue, randomIndex;
+
+  // While there remain elements to shuffle...
+  while (0 !== currentIndex) {
+
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+
+    // And swap it with the current element.
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
+
+  return array;
+}
+
+var btn = document.getElementById("btn");
+btn.addEventListener("click",function(e){
+    var ipt = document.getElementById('ipt');
+	var opt = document.getElementById('opt');
+	var arr = ipt.value.replace(/,+/g,',').split(',');
+	opt.value = shuffle(arr).toString().replace(/,+/g,',').trim().replace(/[,]+/g,', ').replace(/[,][ ][ ]+/g,', ');
+},false);
+
+var btn2 = document.getElementById("btn2");
+btn2.addEventListener("click",function(e){
+    var ipt = document.getElementById('ipt');
+	var opt = document.getElementById('opt');
+	var arr = ipt.value.replace(/,+/g,',').split(',');
+	opt.value = shuffle(arr).toString().replace(/,+/g,',').trim().replace(/[,]+/g,', ').replace(/[,][ ][ ]+/g,', ').replace(/,/g,'');
+},false);
+
+document.getElementById("opt").onclick = function() {
+    this.select();
+    document.execCommand('copy');
+}
+</script>
+</body>
+</html>
