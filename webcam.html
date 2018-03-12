@@ -11,8 +11,7 @@
   </style>
 </head>
 <body>
-
-<p><video id="video" autoplay="autoplay"></video></p>
+<video id="video" autoplay="autoplay"></video>
 <p><input type="button" id="buttonSnap" value="Take screenshot" disabled="disabled" onclick="snapshot()" /></p>
 <p>
 <input type="button" id="buttonStart" value="Start" disabled="disabled" onclick="start()" />
@@ -32,11 +31,12 @@ var videoStream = null;
 var preLog = document.getElementById('preLog');
 
 video.width="854";
-
+video.height="480";
+	
 function log(text)
 {
-	if (preLog) preLog.textContent += ('\n' + text);
-	else alert(text);
+//	if (preLog) preLog.textContent += ('\n' + text);
+//	else alert(text);
 }
 
 function snapshot()
