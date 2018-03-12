@@ -7,7 +7,10 @@
 <meta name='description' content='Tutorial, Tips and Trick Android Phone By Aahedi'>
 <meta name='author' content='Aahedi'>
   <style>html,body{margin:0;padding:0;width:100%;}
-  #video{filter:contrast(90%) brightness(120%) saturate(110%)}
+  #video{filter:contrast(90%) brightness(120%) saturate(110%);
+    display: block;
+    margin: auto;
+    width: 100%;}
   </style>
 </head>
 <body>
@@ -29,9 +32,6 @@ var video = document.getElementById('video');
 var canvas = document.getElementById('canvas');
 var videoStream = null;
 var preLog = document.getElementById('preLog');
-
-video.width="854";
-video.height="480";
 	
 function log(text)
 {
