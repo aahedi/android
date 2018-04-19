@@ -114,9 +114,19 @@ function addRowsBefore(table, data) {
     return table;
 }
 
+var removeUselessWords = function(txt) {
+	  var kata = "di,dari,ke,yang,dan,dengan,ini,wib";
+	  var uselessWordsArray = kata.split(',');
+	  var expStr = uselessWordsArray.join("|");
+	  return txt.replace(new RegExp('\\b(' + expStr + ')\\b', 'gi'), ' ')
+                    .replace(/\s{2,}/g, ' ');
+  }
+  
 $(function() {
     $('#countWordsBtn').on('click', function(e) {
         var str = $('#wordsTxtAra').val();
+        str = str.replace(/\d/g,''); /*hapus angka*/
+        str = removeUselessWords(str); /*hapus kata umum*/
         var wordFreq = wordFrequency(str);
         var wordCount = countWords(str);
         var uniqueWords = wordFreq.length;
