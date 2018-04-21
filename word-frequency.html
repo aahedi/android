@@ -22,13 +22,18 @@ textarea, input[type="button"], table {
     margin: 4px;
     padding: 2px;
 }
+	   
+#wordFreq{
+height:300px;
+overflow:auto;
+}
     </style>
     </head>
 <body>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
 <h1>Word Frequency</h1>
-<textarea id="blacklist" cols="100" rows="4" placeholder="kata yang di-blacklist">di,dari,ke,yang,dan,dengan,ini,wib,detik,menit,jam,lalu,kali</textarea><br>
+<textarea id="blacklist" cols="100" rows="4" placeholder="kata yang di-blacklist">di,dari,ke,yang,dan,dengan,ini,wib,detik,menit,jam,lalu,kali,dibaca,tak,untuk,akan,bikin,bisa,dalam</textarea><br>
 <textarea id="wordsTxtAra" cols="100" rows="10" placeholder="isi dengan text halaman web"></textarea><br>
 <input type="button" id="countWordsBtn" value="Count Words">
 <div id="wordFreq"></div>
