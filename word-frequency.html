@@ -28,6 +28,7 @@ textarea, input[type="button"], table {
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
 <h1>Word Frequency</h1>
+<textarea id="blacklist" cols="10" rows="8">di,dari,ke,yang,dan,dengan,ini,wib,detik,menit,jam,lalu,kali</textarea><br>
 <textarea id="wordsTxtAra" cols="60" rows="8"></textarea><br>
 <input type="button" id="countWordsBtn" value="Count Words">
 <div id="wordFreq"></div>
@@ -115,7 +116,7 @@ function addRowsBefore(table, data) {
 }
 
 var removeUselessWords = function(txt) {
-	  var kata = "di,dari,ke,yang,dan,dengan,ini,wib";
+	  var kata = $('#blacklist').val();
 	  var uselessWordsArray = kata.split(',');
 	  var expStr = uselessWordsArray.join("|");
 	  return txt.replace(new RegExp('\\b(' + expStr + ')\\b', 'gi'), ' ')
