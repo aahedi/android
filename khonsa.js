@@ -1,4 +1,4 @@
-var pesanku = prompt("Halo Khonsa, kami dari BNN. Gimana input berita-nya lancar?", "");
+/*var pesanku = prompt("Halo Khonsa, kami dari BNN. Gimana input berita-nya lancar?", "");
 if (pesanku == null || pesanku == "") {
 //alert('kosong')
 }
@@ -25,3 +25,4 @@ function kirim_pesan(isi_pesan) {
     hr.send(param);
     //document.getElementById("status").innerHTML = "processing...";
 }
+*/
