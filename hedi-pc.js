@@ -1,8 +1,8 @@
 var donam = window.location.hostname.split('.')[1];
 
-     if(donam =='detik'){
+     //if(donam =='detik'){
 
-var kata = "utu,adapun";
+var kata = "youtube";
 var kata_arr = kata.split(',');
 var halaman = document.documentElement.innerText;
 var halaman_arr = getWordsByNonWhiteSpace(halaman);
@@ -35,7 +35,7 @@ alert('kosong');
 }
 }
 
-cari_kata(halaman_arr,kata_arr);
+//cari_kata(halaman_arr,kata_arr);
 
 function containsAny(str, substrings) {
     for (var i = 0; i != substrings.length; i++) {
@@ -51,6 +51,8 @@ var result = containsAny(url_halaman,kata_arr);
 if (result !=null){
 alert("Ditemukan: " + result);
 }
-else{alert('tidak ditemukan');}
-          
+else{
+     alert('tidak ditemukan');
 }
+          
+//}
