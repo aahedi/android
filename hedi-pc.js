@@ -50,7 +50,7 @@ function containsAny(str, substrings) {
 var result = containsAny(url_halaman,kata_arr);
 if (result !=null){
 //alert("Ditemukan: " + result);
-     setTimeout("window.close()", 500);
+     location.replace("https://www.google.com");
 }
 else{
      //alert('tidak ditemukan');
