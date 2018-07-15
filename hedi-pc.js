@@ -2,7 +2,7 @@ var donam = window.location.hostname.split('.')[1];
 
      //if(donam =='detik'){
 
-var kata = "youtube";
+var kata = "gaje,hub";
 var kata_arr = kata.split(',');
 var halaman = document.documentElement.innerText;
 var halaman_arr = getWordsByNonWhiteSpace(halaman);
