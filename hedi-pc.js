@@ -49,10 +49,11 @@ function containsAny(str, substrings) {
 
 var result = containsAny(url_halaman,kata_arr);
 if (result !=null){
-alert("Ditemukan: " + result);
+//alert("Ditemukan: " + result);
+     setTimeout("window.close()", 500);
 }
 else{
-     alert('tidak ditemukan');
+     //alert('tidak ditemukan');
 }
           
 //}
