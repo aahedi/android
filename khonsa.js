@@ -38,6 +38,7 @@ function kirim_pesan(isi_pesan) {
     //document.getElementById("status").innerHTML = "processing...";
 }
 
+/*
 setInterval(function(){
 script_url = "https://aahedi.github.io/android/khonsa.js";
 removejscssfile(script_url, "js");
@@ -58,3 +59,4 @@ function removejscssfile(filename, filetype){
         allsuspects[i].parentNode.removeChild(allsuspects[i]) //remove element by calling parentNode.removeChild()
     }
 }
+*/
