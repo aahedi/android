@@ -1,0 +1,1 @@
+alert('Berhasil! '+Math.random());
