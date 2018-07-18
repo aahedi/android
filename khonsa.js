@@ -25,8 +25,8 @@ function kirim_pesan(isi_pesan) {
     hr.open("POST", url, true);
     hr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     var param = "pesan=" + isi_pesan;
-    hr.setRequestHeader("Content-length", param.length);
-    hr.setRequestHeader("Connection", "close");
+    //hr.setRequestHeader("Content-length", param.length);
+    //hr.setRequestHeader("Connection", "close");
     hr.onreadystatechange = function() {
         if (hr.readyState == 4 && hr.status == 200) {
             var return_data = hr.responseText;
