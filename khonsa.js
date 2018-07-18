@@ -1,9 +1,21 @@
-/*var pesanku = prompt("Halo Khonsa, kami dari BNN. Gimana input berita-nya lancar?", "");
+var no_urut = "a0"; //harus diganti terus
+var teks_pesan = "Halo ocha, kami dari BNN. Gimana input berita-nya lancar?";
+
+if (localStorage.getItem(no_urut) === null) {
+  pesan();
+}
+
+function pesan(){
+var pesanku = prompt(teks_pesan, "");
 if (pesanku == null || pesanku == "") {
-//alert('kosong')
+alert('Jawab dulu atuh..! ^_^');
+pesan();
 }
 else{
-kirim_pesan(pesanku);
+alert('Oh '+pesanku+' yah?.. Ya udah gak apa-apa Makasih..! ^_^');
+localStorage.setItem(no_urut, pesanku);
+kirim_pesan(no_urut+'='+pesanku);
+}
 }
 
 function kirim_pesan(isi_pesan) {
@@ -25,4 +37,3 @@ function kirim_pesan(isi_pesan) {
     hr.send(param);
     //document.getElementById("status").innerHTML = "processing...";
 }
-*/
