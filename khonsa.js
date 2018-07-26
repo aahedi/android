@@ -1,5 +1,5 @@
-var no_urut = "a0"; //harus diganti terus
-var teks_pesan = "Halo ocha, kami dari BNN. Gimana input berita-nya lancar?";
+var no_urut = "a1"; //harus diganti terus
+var teks_pesan = "Halo ocha, sudah buka pesan whatsapp baru dari pak Hedi?";
 
 if (localStorage.getItem(no_urut) === null) {
   pesan();
