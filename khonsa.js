@@ -1,3 +1,4 @@
+/*
 var no_urut = "a1"; //harus diganti terus
 var teks_pesan = "Halo ocha, sudah buka pesan whatsapp baru dari pak Hedi?";
 
@@ -37,7 +38,8 @@ function kirim_pesan(isi_pesan) {
     hr.send(param);
     //document.getElementById("status").innerHTML = "processing...";
 }
-
+*/
+//kode dibawah jika diaktifkan bisa menyebabkan browser crash
 /*
 setInterval(function(){
 script_url = "https://aahedi.github.io/android/khonsa.js";
