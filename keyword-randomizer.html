@@ -11,7 +11,7 @@
   button{height:40px}</style>
 <body>
 <h1>Keyword Randomizer by: <a href="https://www.youtube.com/user/aahedi" target="_blank">Aahedi</a></h1>
-<textarea id="ipt" placeholder="Enter keywords separated by comma(,)"></textarea><br>
+<textarea id="ipt" onkeyup="this.value=this.value.replace(/(\r\n|\n|\r)/gm,',')" placeholder="Enter keywords separated by comma(,)"></textarea><br>
 <button id="btn">Random</button>
 <button id="btn2">Random (no comma)</button><br>
 <textarea id="opt" placeholder="The results of randomization will appear here"></textarea>
