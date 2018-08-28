@@ -7,14 +7,15 @@
 <meta name='description' content='Tutorial, Tips and Trick Android Phone By Aahedi'>
 <meta name='author' content='Aahedi'>
   <style>html,body{margin:0;padding:0;width:100%;}h1{text-align:center}
-  textarea,button{display:block;margin:auto;width:50%;}textarea{height:180px;resize:none;padding:10px;font-size:14px}
+  textarea,button,input{display:block;margin:auto;width:50%;}textarea{height:180px;resize:none;padding:10px;font-size:14px}
   button{height:40px}</style>
 <body>
 <h1>Keyword Randomizer by: <a href="https://www.youtube.com/user/aahedi" target="_blank">Aahedi</a></h1>
 <textarea id="ipt" onkeyup="this.value=this.value.replace(/(\r\n|\n|\r)/gm,',')" placeholder="Enter keywords separated by comma(,)"></textarea><br>
 <button id="btn">Random</button>
 <button id="btn2">Random (no comma)</button><br>
-<textarea id="opt" placeholder="The results of randomization will appear here"></textarea>
+<textarea id="opt" placeholder="The results of randomization will appear here"></textarea><br>
+<input id="key" type="text" placeholder="Filter keyword" onkeyup="cari_keyword(this.value)"/><br>
 <script>
 function shuffle(array) {
   var currentIndex = array.length, temporaryValue, randomIndex;
@@ -54,6 +55,23 @@ btn2.addEventListener("click",function(e){
 document.getElementById("opt").onclick = function() {
     this.select();
     document.execCommand('copy');
+}
+
+function cari_keyword(key){
+var arr = document.getElementById('ipt').value.split(',');
+
+function filterArray (arr) {
+    var i = arr.length;
+    while (i--) {
+        if (arr[i].indexOf(key) < 0) {
+            arr.splice(i, 1);
+        }
+    }
+}
+
+filterArray(arr);
+
+document.getElementById("opt").value = arr.toString();
 }
 </script>
 </body>
