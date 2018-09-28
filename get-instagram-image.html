@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Get Image Instagram URL by: Aahedi</title>
+<meta name='description' content='Download image from instagram url'>
+<meta name='author' content='Aahedi'>
+  <style>html,body{margin:0;padding:0;width:100%;}h1{text-align:center}
+  textarea,button,input,span{display:block;margin:auto;width:50%;}textarea{height:180px;resize:none;padding:10px;font-size:14px}
+  button{height:40px}img{margin-left:20%;width:60%}</style>
+<body>
+
+<h1>Get Image Instagram by: <a href="https://www.youtube.com/user/aahedi" target="_blank">Aahedi</a></h1>
+<input id="url" type="url" value="" placeholder="Paste URL here!"/><br>
+<img id='gbr'/>
+
+<script>
+document.getElementById("url").onfocus = function() {
+    this.select();
+}
+
+document.getElementById('url').onpaste = function (event) {
+	setTimeout(function(){
+	get_ig_img(document.getElementById('url').value);
+	}, 4);
+}
+
+function get_ig_img(url){
+var pathArray = url.split('/');
+
+var gbr_ig = pathArray[0] + "//" + pathArray[2] + "/" + pathArray[3] + "/" + pathArray[4]+ "/media/?size=l";
+
+document.getElementById("gbr").src = gbr_ig;
+}
+</script>
+
+</body>
+</html>
