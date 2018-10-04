@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Webcam by: Aahedi</title>
+<meta name='description' content='Tutorial, Tips and Trick Android Phone By Aahedi'>
+<meta name='author' content='Aahedi'>
+  <style>html,body{margin:0;padding:0;width:100%;overflow:auto}
+#v,canvas{
+  width: 640px;
+  height: 480px;
+  /*transform: scaleX(-1);*/
+}
+#v{
+  border: 1px solid #ccc;
+}
+.test{
+  /*filter: contrast(110%) saturate(105%) brightness(100%) blur(1px);*/
+}
+.hedi{
+  filter: contrast(150%) saturate(110%) brightness(120%) blur(1px);
+}
+.blur {
+  -webkit-filter: blur(3px);
+  -moz-filter: blur(3px);
+  -o-filter: blur(3px);
+  -ms-filter: blur(3px);
+  filter: blur(3px);
+}
+.brightness {
+  -webkit-filter: brightness(5);
+  -moz-filter: brightness(5);
+  -o-filter: brightness(5);
+  -ms-filter: brightness(5);
+  filter: brightness(5);
+}
+.contrast {
+  -webkit-filter: contrast(8);
+  -moz-filter: contrast(8);
+  -o-filter: contrast(8);
+  -ms-filter: contrast(8);
+  filter: contrast(8);
+}
+.hue-rotate {
+  -webkit-filter: hue-rotate(90deg);
+  -moz-filter: hue-rotate(90deg);
+  -o-filter: hue-rotate(90deg);
+  -ms-filter: hue-rotate(90deg);
+  filter: hue-rotate(90deg);
+}
+.hue-rotate2 {
+  -webkit-filter: hue-rotate(180deg);
+  -moz-filter: hue-rotate(180deg);
+  -o-filter: hue-rotate(180deg);
+  -ms-filter: hue-rotate(180deg);
+  filter: hue-rotate(180deg);
+}
+.hue-rotate3 {
+  -webkit-filter: hue-rotate(270deg);
+  -moz-filter: hue-rotate(270deg);
+  -o-filter: hue-rotate(270deg);
+  -ms-filter: hue-rotate(270deg);
+  filter: hue-rotate(270deg);
+}
+.saturate {
+  -webkit-filter: saturate(10);
+  -moz-filter: saturate(10);
+  -o-filter: saturate(10);
+  -ms-filter: saturate(10);
+  filter: saturate(10);
+}
+.grayscale {
+  -webkit-filter: grayscale(1);
+  -moz-filter: grayscale(1);
+  -o-filter: grayscale(1);
+  -ms-filter: grayscale(1);
+  filter: grayscale(1);
+}
+.sepia {
+  -webkit-filter: sepia(1);
+  -moz-filter: sepia(1);
+  -o-filter: sepia(1);
+  -ms-filter: sepia(1);
+  filter: sepia(1);
+}
+.invert {
+  -webkit-filter: invert(1);
+  -moz-filter: invert(1);
+  -o-filter: invert(1);
+  -ms-filter: invert(1);
+  filter: invert(1);
+}
+</style>
+</head>
+<script src="http://evanw.github.io/glfx.js/glfx.js"></script>
+<body>
+<div style="text-align:center;">
+    <canvas id="c" width="640" height="480"></canvas>
+    <video id="v" width="640" height="480" hidden></video>
+  </video>
+</div>
+
+<script>
+(function (win, nav) {
+  "use strict";
+
+  win.requestAnimationFrame = win.requestAnimationFrame ||
+                              win.msRequestAnimationFrame ||
+                              win.mozRequestAnimationFrame ||
+                              win.webkitRequestAnimationFrame;
+
+  nav.getUserMedia = nav.getUserMedia ||
+                     nav.oGetUserMedia ||
+                     nav.msGetUserMedia ||
+                     nav.mozGetUserMedia ||
+                     nav.webkitGetUserMedia;
+
+  // Fallback for browsers that don't provide
+  // the requestAnimationFrame API (e.g. Opera).
+  if (!win.requestAnimationFrame) {
+    win.requestAnimationFrame = function (callback) {
+      setTimeout(callback, 0);
+    };
+  }
+
+  // Fallback for browsers that don't provide
+  // the URL.createObjectURL API (e.g. Opera).
+  if (!win.URL || !win.URL.createObjectURL) {
+    win.URL = win.URL || {};
+    win.URL.createObjectURL = function (obj) {
+      return obj;
+    };
+  }
+
+})(window, navigator);
+
+(function (doc, nav) {
+  "use strict";
+
+  var video, width, height, context;
+
+  function initialize() {
+  
+  var localMediaStream = null;
+    // The source video.
+    video = doc.getElementById("v");
+    width = video.width;
+    height = video.height;
+
+    // The target canvas.
+    var canvas = doc.getElementById("c");
+    context = canvas.getContext("2d");
+
+    // Get the webcam's stream.
+    nav.getUserMedia({video: true}, startStream, function () {});
+  }
+
+  function startStream(stream) {
+    video.src = URL.createObjectURL(stream);
+    video.play();
+
+    // Ready! Let's start drawing.
+    requestAnimationFrame(draw);
+  }
+
+  function draw() {
+    var frame = readFrame();
+
+    if (frame) {
+      replaceGreen(frame.data);
+      context.putImageData(frame, 0, 0);
+    }
+
+    // Wait for the next frame.
+    requestAnimationFrame(draw);
+  }
+
+  function readFrame() {
+    try {
+      context.drawImage(video, 0, 0, width, height);
+    } catch (e) {
+      // The video may not be ready, yet.
+      return null;
+    }
+
+    return context.getImageData(0, 0, width, height);
+  }
+
+  function replaceGreen(data) {
+    var len = data.length;
+
+    for (var i = 0, j = 0; j < len; i++, j += 4) {
+      // Convert from RGB to HSL...
+      var hsl = rgb2hsl(data[j], data[j + 1], data[j + 2]);
+      var h = hsl[0], s = hsl[1], l = hsl[2];
+
+      // ... and check if we have a somewhat green pixel.
+	  //if (h >= 90 && h <= 160 && s >= 25 && s <= 90 && l >= 20 && l <= 75) {
+	  
+      if (h >= 65 && h <= 185 && s >= 0 && s <= 115 && l >= 0 && l <= 100) {
+        data[j + 3] = 0;
+      }
+    }
+  }
+
+  function rgb2hsl(r, g, b) {
+    r /= 255; g /= 255; b /= 255;
+
+    var min = Math.min(r, g, b);
+    var max = Math.max(r, g, b);
+    var delta = max - min;
+    var h, s, l;
+
+    if (max == min) {
+      h = 0;
+    } else if (r == max) {
+      h = (g - b) / delta;
+    } else if (g == max) {
+      h = 2 + (b - r) / delta;
+    } else if (b == max) {
+      h = 4 + (r - g) / delta;
+    }
+
+    h = Math.min(h * 60, 360);
+
+    if (h < 0) {
+      h += 360;
+    }
+
+    l = (min + max) / 2;
+
+    if (max == min) {
+      s = 0;
+    } else if (l <= 0.5) {
+      s = delta / (max + min);
+    } else {
+      s = delta / (2 - max - min);
+    }
+
+    return [h, s * 100, l * 100];
+  }
+
+  addEventListener("DOMContentLoaded", initialize);
+})(document, navigator);
+
+(function() {
+  var video = document.querySelector('#v');
+  var canvas = document.querySelector('#c');
+
+  var filterIndex = 0;
+  var filters = [
+    'hedi',
+	'grayscale',
+    'sepia',
+    'blur',
+    'brightness',
+    'contrast',
+    'hue-rotate',
+    'hue-rotate2',
+    'hue-rotate3',
+    'saturate',
+    'invert',
+    ''
+  ];
+
+  canvas.onclick = video.onclick = function() {
+    video.className = filters[filterIndex++ % filters.length];
+    canvas.className = filters[filterIndex++ % filters.length-1];
+  };
+  //filter otomatis
+    document.getElementById('c').className = 'test';
+	  
+})();
+/*
+window.onload = function() {
+    var canvas = fx.canvas();
+    var video = document.getElementById('v');
+    var texture = canvas.texture(video);
+    document.querySelector('div').appendChild(canvas);
+    setInterval(function() {
+        texture.loadContentsOf(video);
+		canvas.id='x';
+		canvas.draw(texture).brightnessContrast(0.15, 0.4).update().denoise(30).update().hueSaturation(0.01, 0.1).update();
+    }, 10);
+    video.play();
+};
+*/
+</script>
+
+
+</body>
+
+</html>
