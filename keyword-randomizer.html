@@ -11,13 +11,15 @@
   button{height:40px}</style>
 <body>
 <h1>Keyword Randomizer by: <a href="https://www.youtube.com/user/aahedi" target="_blank">Aahedi</a></h1>
-<textarea id="ipt" onkeyup="this.value=this.value.replace(/(\r\n|\n|\r)/gm,',');counter_txt(this)" placeholder="Enter keywords separated by comma(,)"></textarea><span id="counter_info" style="font-size:small;padding-left:70%"></span><br>
+<textarea id="ipt" onkeyup="this.value=this.value.replace(/(\r\n|\n|\r)/gm,',');counter_txt(this)" placeholder="Enter keywords separated by comma(,)">   first second     ,aahedi, aahedi ,aahedi , aahedi, aahedi aahedi, aahedi aahedi   aahedi ,</textarea><span id="counter_info" style="font-size:small;padding-left:70%"></span><br>
 <button id="btn">Random</button>
 <button id="btn2">Random (no comma)</button><br>
 <textarea id="opt" placeholder="The results of randomization will appear here"></textarea><br>
 <input id="key" type="text" placeholder="Filter keyword" onkeyup="cari_keyword(this.value)"/><br>
 <script>
-function shuffle(array) {
+function shuffle(myArray) {
+let array = [...new Set(myArray)]; //remove duplicate
+
   var currentIndex = array.length, temporaryValue, randomIndex;
 
   // While there remain elements to shuffle...
@@ -36,11 +38,17 @@ function shuffle(array) {
   return array;
 }
 
+function beres(str){
+result = str.replace(/^[,\s]+|[,\s]+$/g, '').replace(/\s*,\s*/g, ',');
+result = result.replace(/\t/g,'\r').replace(/\n/g, " ").replace(/\s{2,}/g, ' ');
+return result;
+}
+
 var btn = document.getElementById("btn");
 btn.addEventListener("click",function(e){
     var ipt = document.getElementById('ipt');
 	var opt = document.getElementById('opt');
-	var arr = ipt.value.replace(/,+/g,',').split(',');
+	var arr = beres(ipt.value).replace(/,+/g,',').split(',');
 	opt.value = shuffle(arr).toString().replace(/,+/g,',').trim().replace(/[,]+/g,', ').replace(/[,][ ][ ]+/g,', ');
 },false);
 
@@ -48,7 +56,7 @@ var btn2 = document.getElementById("btn2");
 btn2.addEventListener("click",function(e){
     var ipt = document.getElementById('ipt');
 	var opt = document.getElementById('opt');
-	var arr = ipt.value.replace(/,+/g,',').split(',');
+	var arr = beres(ipt.value).replace(/,+/g,',').split(',');
 	opt.value = shuffle(arr).toString().replace(/,+/g,',').trim().replace(/[,]+/g,', ').replace(/[,][ ][ ]+/g,', ').replace(/,/g,'');
 },false);
 
@@ -58,7 +66,9 @@ document.getElementById("opt").onclick = function() {
 }
 
 function cari_keyword(key){
-var arr = document.getElementById('ipt').value.split(',');
+var myArray = beres(document.getElementById('ipt').value).split(',');
+
+let arr = [...new Set(myArray)];
 
 function filterArray (arr) {
     var i = arr.length;
