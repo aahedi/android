@@ -13,7 +13,8 @@
 <h1>Keyword Randomizer by: <a href="https://www.youtube.com/user/aahedi" target="_blank">Aahedi</a></h1>
 <textarea id="ipt" onkeyup="this.value=this.value.replace(/(\r\n|\n|\r)/gm,',');counter_txt(this)" placeholder="Enter keywords separated by comma(,)">   first second     ,aahedi, aahedi ,aahedi , aahedi, aahedi aahedi, aahedi aahedi   aahedi ,</textarea><span id="counter_info" style="font-size:small;padding-left:70%"></span><br>
 <button id="btn">Random</button>
-<button id="btn2">Random (no comma)</button><br>
+<button id="btn2">Random (no comma)</button>
+<button id="btn3">Unique</button><br>
 <textarea id="opt" placeholder="The results of randomization will appear here"></textarea><br>
 <input id="key" type="text" placeholder="Filter keyword" onkeyup="cari_keyword(this.value)"/><br>
 <script>
@@ -64,6 +65,14 @@ document.getElementById("opt").onclick = function() {
     this.select();
     document.execCommand('copy');
 }
+
+var btn3 = document.getElementById("btn3");
+btn3.addEventListener("click",function(e){
+    var ipt = document.getElementById('ipt');
+	var opt = document.getElementById('opt');
+	var arr = beres(ipt.value).replace(/[ ,]+/g, ",").split(','); //split all words
+	opt.value = shuffle(arr).toString().replace(/,+/g,',').trim().replace(/[,]+/g,', ').replace(/[,][ ][ ]+/g,', ').replace(/,/g,'');
+},false);
 
 function cari_keyword(key){
 var myArray = beres(document.getElementById('ipt').value).split(',');
