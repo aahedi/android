@@ -5,7 +5,7 @@ function masuk(){
    buka();
 }
 function buka(){
-var link = prompt("Isi URL?", "https://");
+var link = prompt("Alamat web:", "");
 if (link != null) {
 window.open(url + link.match(/\d/g).join(""),"_blank")
 }
