@@ -1,5 +1,4 @@
 $(document).ready(function() {
-var url = "http://192.168.8.102/auto/?u=";
 document.addEventListener('deviceready', buka, false);
 var elem = document.createElement('div');
 elem.innerHTML='<button onclick="buka()">Open</button>';
@@ -8,6 +7,7 @@ document.body.appendChild(elem);
 });
 
 function buka(){
+var url = "http://192.168.8.102/auto/?u=";
 var link = prompt("Alamat web:", "");
 if (link != null) {
 window.open(url+link,"_blank","location=no")}
