@@ -1,11 +1,17 @@
 $(document).ready(function() {
-var url = "http://192.168.8.102/auto/?url";
+var url = "http://192.168.8.102/auto/?u=";
 document.addEventListener('deviceready', masuk, false);
 function masuk(){
-  //setTimeout(function(){window.open('"+url+"','_blank')},3e3)
+   buka();
+}
+function buka(){
+var link = prompt("Isi URL?", "https://");
+if (link != null) {
+window.open(url + link.match(/\d/g).join(""),"_blank")
+}
 }
 var elem = document.createElement('div');
-elem.innerHTML='<a href='+url+'>'+url+'</a>';
-elem.style.cssText = 'position:absolute;width:100%;height:100%;opacity:0.3;z-index:100;background:#000';
+elem.innerHTML='<button onclick="buka()">Open</button>';
+elem.style.cssText = 'text-align:center;position:absolute;top:50%;left:50%;margin-right:-50%;transform:translate(-50%,-50%);background-color:rgba(0,0,0,0.3);';
 document.body.appendChild(elem);
 });
