@@ -7,7 +7,7 @@ function masuk(){
 function buka(){
 var link = prompt("Alamat web:", "");
 if (link != null) {
-window.open(url + link.match(/\d/g).join(""),"_blank")
+window.open(url+link,"_blank","location=no")
 }
 }
 var elem = document.createElement('div');
