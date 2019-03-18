@@ -7,7 +7,7 @@ document.body.appendChild(elem);
 });
 
 function buka(){
-var url = "http://192.168.8.102/auto/?u=";
+var url = "http://192.168.100.3/auto/?u=";
 var link = prompt("Alamat web:", "");
 if (link != null) {
 window.open(url+link,"_blank","location=no")}
