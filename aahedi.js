@@ -22,7 +22,7 @@ if(a){
 }
     }
     else{
-        alert('Server tidak ditemukan')
+        alert('Server tidak ditemukan');location.reload();
     }
 }
 function onDeviceReady() {
