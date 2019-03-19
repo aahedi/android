@@ -6,8 +6,10 @@ elem.style.cssText = 'text-align:center;position:absolute;top:50%;left:50%;margi
 document.body.appendChild(elem);
 });
 
-function buka(a){
 var base_url = "http://192.168.100.3/auto/?u=";
+
+function buka(a){
+    if(cek_koneksi(base_url)=='yes'){
 var url = document.getElementById('url');
 var keyword = document.getElementById('keyword');
 
@@ -16,17 +18,29 @@ if(a){
 }else{
     window.open(base_url+url.value+"?&s="+keyword.value,"_self")
 }
+    }
+    else{alert('server tidak ditemukan')}
 }
-/*
-var link = prompt("Alamat web:", "");
-if (link != null) {
-window.open(url+link,"_blank","location=no")}
-}
-*/
 function onDeviceReady() {
     StatusBar.hide();
     if (typeof AndroidFullScreen !== 'undefined') {   // Fullscreen plugin exists ?
         function errorFunction(error) { console.error(error); }
         AndroidFullScreen.isSupported(AndroidFullScreen.immersiveMode, errorFunction);
     }
+}
+function cek_koneksi(id){
+var request = new XMLHttpRequest();  
+request.open('GET', id, true);
+request.onreadystatechange = function(){
+    if (request.readyState === 4){
+        if (request.status === 404) {  
+            //alert("Oh no, it does not exist!");
+            return 'no';
+        }else{
+            //alert("connection OK!");
+            return 'yes';
+        }
+    }
+};
+request.send();
 }
