@@ -1,17 +1,17 @@
 $(document).ready(function() {
 document.addEventListener('deviceready', onDeviceReady, false);
 var elem = document.createElement('div');
-elem.innerHTML='<style>button,input{height:30px;width:200px;margin:2px;}</style><input type="url" placeholder="url" id="url"/><br><input type="text" placeholder="image keyword" id="keyword"/><br><button onclick="buka()">Open</button><br><button onclick="buka(1)">Open Inappbrowser</button>';
+elem.innerHTML='<style>button,input{height:30px;width:200px;margin:2px;}</style><input type="url" placeholder="url" id="url"/><br><input type="text" placeholder="image keyword" id="keyword"/><br><button onclick="buka()">Open</button><br><button onclick="buka(1)">Open Inappbrowser</button><input type"text" id="koneksi" hidden/>';
 elem.style.cssText = 'text-align:center;position:absolute;top:50%;left:50%;margin-right:-50%;transform:translate(-50%,-50%);background-color:rgba(0,0,0,0.3);';
 document.body.appendChild(elem);
 });
 
-function buka(a){
 var base_host = "http://192.168.8.102/auto/";
 var base_url = base_host+"?u=";
-    
-    if(cek_koneksi(base_host)=="yes"){
-        console.log(cek_koneksi(base_host));
+cek_koneksi(base_host)
+
+function buka(a){
+    if(document.getElementById('koneksi').value=='yes'){
 var url = document.getElementById('url');
 var keyword = document.getElementById('keyword');
 
@@ -22,7 +22,6 @@ if(a){
 }
     }
     else{
-        console.log(cek_koneksi(base_host));
         alert('Server tidak ditemukan')
     }
 }
@@ -40,10 +39,10 @@ request.onreadystatechange = function(){
     if (request.readyState === 4){
         if (request.status === 404) {  
             //alert("Oh no, it does not exist!");
-            return 'no';
+            document.getElementById('koneksi').value='no';
         }else{
             //alert("connection OK!");
-            return 'yes';
+            document.getElementById('koneksi').value='yes';
         }
     }
 };
