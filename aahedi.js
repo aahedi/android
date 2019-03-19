@@ -12,9 +12,9 @@ var url = document.getElementById('url');
 var keyword = document.getElementById('keyword');
 
 if(a){
-    window.open(base_url+url.value+"?&s="+keyword.value,"_blank","location=no","toolbar=no")}
+    window.open(base_url+url.value+"?&s="+keyword.value,"_blank","location=no","toolbar=no")
 }else{
-    window.open(base_url+url.value+"?&s="+keyword.value,"_self")}
+    window.open(base_url+url.value+"?&s="+keyword.value,"_self")
 }
 /*
 var link = prompt("Alamat web:", "");
