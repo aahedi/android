@@ -16,6 +16,7 @@ if(a){
 }else{
     window.open(base_url+url.value+"?&s="+keyword.value,"_self")
 }
+}
 /*
 var link = prompt("Alamat web:", "");
 if (link != null) {
