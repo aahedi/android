@@ -6,10 +6,11 @@ elem.style.cssText = 'text-align:center;position:absolute;top:50%;left:50%;margi
 document.body.appendChild(elem);
 });
 
-var base_url = "http://192.168.8.102/auto/?u=";
+var base_host = "http://192.168.8.102/";
+var base_url = base_host+"auto/?u=";
 
 function buka(a){
-    if(cek_koneksi(base_url)==='yes'){
+    if(cek_koneksi(base_host)=="yes"){
 var url = document.getElementById('url');
 var keyword = document.getElementById('keyword');
 
