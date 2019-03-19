@@ -9,7 +9,7 @@ document.body.appendChild(elem);
 var base_url = "http://192.168.8.102/auto/?u=";
 
 function buka(a){
-    if(cek_koneksi(base_url)=='yes'){
+    if(cek_koneksi(base_url)==='yes'){
 var url = document.getElementById('url');
 var keyword = document.getElementById('keyword');
 
