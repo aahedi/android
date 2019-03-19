@@ -6,7 +6,7 @@ elem.style.cssText = 'text-align:center;position:absolute;top:50%;left:50%;margi
 document.body.appendChild(elem);
 });
 
-var base_url = "http://192.168.100.3/auto/?u=";
+var base_url = "http://192.168.8.102/auto/?u=";
 
 function buka(a){
     if(cek_koneksi(base_url)=='yes'){
@@ -19,7 +19,7 @@ if(a){
     window.open(base_url+url.value+"?&s="+keyword.value,"_self")
 }
     }
-    else{alert('server tidak ditemukan')}
+    else{alert('Server tidak ditemukan')}
 }
 function onDeviceReady() {
     StatusBar.hide();
