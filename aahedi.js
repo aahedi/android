@@ -6,11 +6,12 @@ elem.style.cssText = 'text-align:center;position:absolute;top:50%;left:50%;margi
 document.body.appendChild(elem);
 });
 
+function buka(a){
 var base_host = "http://192.168.8.102/auto/";
 var base_url = base_host+"?u=";
-
-function buka(a){
+    
     if(cek_koneksi(base_host)=="yes"){
+        console.log(cek_koneksi(base_host));
 var url = document.getElementById('url');
 var keyword = document.getElementById('keyword');
 
@@ -20,7 +21,10 @@ if(a){
     window.open(base_url+url.value+"?&s="+keyword.value,"_self")
 }
     }
-    else{alert('Server tidak ditemukan')}
+    else{
+        console.log(cek_koneksi(base_host));
+        alert('Server tidak ditemukan')
+    }
 }
 function onDeviceReady() {
     StatusBar.hide();
