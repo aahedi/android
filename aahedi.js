@@ -1,14 +1,14 @@
 $(document).ready(function() {
 document.addEventListener('deviceready', onDeviceReady, false);
 var elem = document.createElement('div');
-elem.innerHTML='<style>button,input{height:30px;width:200px;margin:2px;}</style><input type="url" placeholder="url" id="url"/><br><input type="text" placeholder="image keyword" id="keyword"/><br><button onclick="buka()">Open</button><br><button onclick="buka(1)">Open Inappbrowser</button><input type"text" id="koneksi" hidden/>';
+elem.innerHTML='<style>button,input{height:30px;width:200px;margin:2px;}</style><input type="url" placeholder="url" id="url"/><br><input type="text" placeholder="image keyword" id="keyword"/><br><button onclick="buka()">Open</button><br><button onclick="buka(1)">Open Inappbrowser</button><input type"text" id="koneksi" value="" hidden/>';
 elem.style.cssText = 'text-align:center;position:absolute;top:50%;left:50%;margin-right:-50%;transform:translate(-50%,-50%);background-color:rgba(0,0,0,0.3);';
 document.body.appendChild(elem);
 });
 
 var base_host = "http://192.168.8.102/auto/";
 var base_url = base_host+"?u=";
-cek_koneksi(base_host)
+cek_koneksi(base_host);
 
 function buka(a){
     if(document.getElementById('koneksi').value=='yes'){
@@ -40,9 +40,11 @@ request.onreadystatechange = function(){
         if (request.status === 404) {  
             //alert("Oh no, it does not exist!");
             document.getElementById('koneksi').value='no';
+            console.log(document.getElementById('koneksi').value);
         }else{
             //alert("connection OK!");
             document.getElementById('koneksi').value='yes';
+            console.log(document.getElementById('koneksi').value);
         }
     }
 };
