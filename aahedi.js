@@ -11,7 +11,7 @@ var base_url = "http://192.168.100.3/auto/?u=";
 var url = document.getElementById('url');
 var keyword = document.getElementById('keyword');
 
-window.open(base_url+url.value+"?&s="+keyword.value,"_blank","location=no")}
+window.open(base_url+url.value+"?&s="+keyword.value,"_blank","location=no","toolbar=no")}
 /*
 var link = prompt("Alamat web:", "");
 if (link != null) {
