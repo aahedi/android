@@ -1,7 +1,7 @@
 $(document).ready(function() {
 document.addEventListener('deviceready', onDeviceReady, false);
 var elem = document.createElement('div');
-elem.innerHTML='<input type="url" placeholder="url" id="url"/><br><input type="text" placeholder="image keyword" id="keyword"/><br><button onclick="buka()" style="height:25px;">Open</button><br><button onclick="buka(1)" style="height:25px;">Open Inappbrowser</button>';
+elem.innerHTML='<style>button,input{height:30px;width:200px}</style><input type="url" placeholder="url" id="url"/><br><input type="text" placeholder="image keyword" id="keyword"/><br><button onclick="buka()">Open</button><br><button onclick="buka(1)">Open Inappbrowser</button>';
 elem.style.cssText = 'text-align:center;position:absolute;top:50%;left:50%;margin-right:-50%;transform:translate(-50%,-50%);background-color:rgba(0,0,0,0.3);';
 document.body.appendChild(elem);
 });
