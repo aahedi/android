@@ -37,16 +37,17 @@ var request = new XMLHttpRequest();
 request.open('GET', id, true);
 request.onreadystatechange = function(){
     if (request.readyState === 4){
-        if (request.status === 404) {  
-            //alert("Oh no, it does not exist!");
-            document.getElementById('koneksi').value='no';
-            console.log(document.getElementById('koneksi').value);
-        }else{
+        if (request.status === 200) {
             //alert("connection OK!");
             document.getElementById('koneksi').value='yes';
+            console.log(document.getElementById('koneksi').value);
+        }else{
+            //alert("Oh no, it does not exist!");
+            document.getElementById('koneksi').value='no';
             console.log(document.getElementById('koneksi').value);
         }
     }
+    else{document.getElementById('koneksi').value='no';console.log(document.getElementById('koneksi').value);}
 };
 request.send();
 }
