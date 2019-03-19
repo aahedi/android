@@ -16,8 +16,7 @@ window.open(base_url+url.value+"?&s="+keyword.value,"_blank","location=no")}
 var link = prompt("Alamat web:", "");
 if (link != null) {
 window.open(url+link,"_blank","location=no")}
-*/
 }
-
+*/
 function siap(){
 }
