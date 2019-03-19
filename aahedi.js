@@ -6,8 +6,8 @@ elem.style.cssText = 'text-align:center;position:absolute;top:50%;left:50%;margi
 document.body.appendChild(elem);
 });
 
-var base_host = "http://192.168.8.102/";
-var base_url = base_host+"auto/?u=";
+var base_host = "http://192.168.8.102/auto/";
+var base_url = base_host+"?u=";
 
 function buka(a){
     if(cek_koneksi(base_host)=="yes"){
