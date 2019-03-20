@@ -16,7 +16,7 @@ var url = document.getElementById('url');
 var keyword = document.getElementById('keyword');
 
 if(a){
-    window.open(base_url+url.value+"?&s="+keyword.value,"_blank","location=no","toolbar=no","menubar=0,resizable=0,width=854,height=480")
+    window.open(base_url+url.value+"?&s="+keyword.value,"_blank","location=no","toolbar=no")
 }else{
     window.open(base_url+url.value+"?&s="+keyword.value,"_self")
 }
