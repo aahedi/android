@@ -6,7 +6,7 @@ elem.style.cssText = 'text-align:center;position:absolute;top:50%;left:50%;margi
 document.body.appendChild(elem);
 });
 
-var base_host = "http://play.my.id/auto/";
+var base_host = "http://play.my.id/auto/index.php";
 var base_url = base_host+"?u=";
 cek_koneksi(base_host);
 
