@@ -7,7 +7,7 @@ document.body.appendChild(elem);
 });
 
 var base_host = "http://play.my.id/auto/index.php";
-var base_url = base_host+"?u=";
+var base_url = base_host;
 cek_koneksi(base_host);
 
 function buka(a){
@@ -16,9 +16,9 @@ var url = document.getElementById('url');
 var keyword = document.getElementById('keyword');
 
 if(a){
-    window.open(base_url+url.value+"?&s="+keyword.value,"_blank","location=no","toolbar=no")
+    window.open(base_url+"?s="+keyword.value+"&u="+url.value,"_blank","location=no","toolbar=no")
 }else{
-    window.open(base_url+url.value+"?&s="+keyword.value,"_self")
+    window.open(base_url+"?s="+keyword.value+"&u="+url.value,"_self")
 }
     }
     else{
