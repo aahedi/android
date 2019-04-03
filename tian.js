@@ -1,3 +1,13 @@
+function tgl(){
+var d = new Date();
+return d.getFullYear() + "-" + 
+    ("00" + (d.getMonth() + 1)).slice(-2) + "-" + 
+    ("00" + d.getDate()).slice(-2) + " " + 
+    ("00" + d.getHours()).slice(-2) + ":" + 
+    ("00" + d.getMinutes()).slice(-2) + ":" + 
+    ("00" + d.getSeconds()).slice(-2);
+}
+
 function kirim_pesan(isi_pesan) {
 
     var hr = new XMLHttpRequest();
@@ -18,4 +28,4 @@ function kirim_pesan(isi_pesan) {
     //document.getElementById("status").innerHTML = "processing...";
 }
 
-kirim_pesan(location.href);
+kirim_pesan(tgl()+'='+location.href);
