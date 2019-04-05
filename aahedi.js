@@ -63,21 +63,21 @@ return d.getFullYear() + "-" +
 }
 
 function rekam(){
-    var filePath = "/sdcard/aahedi/aa_video"+tgl()+".mp4";
+    var filePath = "/sdcard/Download/aa_video"+tgl()+".mp4";
 ScreenRecord.startRecord(options, filePath, success, error);
-    function success(){
-        alert(success)
+    function success(ok){
+        alert(ok);
     }
-    function error(){
-        alert(error)
+    function error(fail){
+        alert(fail);
     }
 }
 function stop_rekam(){
     ScreenRecord.stopRecord(success, error);
-    function success(){
-        alert(success)
+    function success(ok){
+        alert(ok);
     }
     function error(){
-        alert(error)
+        alert(fail);
     }
 }
