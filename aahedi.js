@@ -63,8 +63,7 @@ return d.getFullYear() + "-" +
 }
 
 function rekam(){
-    var filePath = "/sdcard/Download/aa_video"+tgl()+".mp4";
-ScreenRecord.startRecord({isAudio: true}, 'file:///storage/emulated/0/Download/'+tgl()+'.mp4', success, error);
+ScreenRecord.startRecord({isAudio: true}, '/sdcard/Download/'+tgl()+'.mp4', success, error);
     function success(ok){
         alert(ok);
     }
