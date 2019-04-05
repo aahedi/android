@@ -1,7 +1,7 @@
 $(document).ready(function() {
 document.addEventListener('deviceready', onDeviceReady, false);
 var elem = document.createElement('div');
-elem.innerHTML='<style>button,input{height:30px;width:200px;margin:2px;}</style><input type="url" placeholder="url" id="url"/><br><input type="text" placeholder="image keyword" id="keyword"/><br><button onclick="buka()">Open</button><br><button onclick="buka(1)">Open Inappbrowser</button><input type"text" id="koneksi" value="" hidden/>';
+elem.innerHTML='<style>button,input{height:30px;width:200px;margin:2px;}</style><input type="url" placeholder="url" id="url"/><br><input type="text" placeholder="image keyword" id="keyword"/><br><button onclick="buka()">Open</button><br><button onclick="buka(1)">Open Inappbrowser</button><br><button onclick="rekam()">Record</button><br><button onclick="stop_rekam()">Stop Record</button><input type"text" id="koneksi" value="" hidden/>';
 elem.style.cssText = 'text-align:center;position:absolute;top:50%;left:50%;margin-right:-50%;transform:translate(-50%,-50%);background-color:rgba(0,0,0,0.3);';
 document.body.appendChild(elem);
 });
@@ -50,4 +50,22 @@ request.onreadystatechange = function(){
     else{document.getElementById('koneksi').value='no';console.log(document.getElementById('koneksi').value);}
 };
 request.send();
+}
+
+function tgl(){
+var d = new Date();
+return d.getFullYear() + "-" + 
+    ("00" + (d.getMonth() + 1)).slice(-2) + "-" + 
+    ("00" + d.getDate()).slice(-2) + "_" + 
+    ("00" + d.getHours()).slice(-2) + ":" + 
+    ("00" + d.getMinutes()).slice(-2) + ":" + 
+    ("00" + d.getSeconds()).slice(-2);
+}
+
+function rekam(){
+    var filePath = "/sdcard/aahedi/aa_video"+tgl()+".mp4";
+ScreenRecord.startRecord(options, filePath, success, error);
+}
+function stop_rekam(){
+    ScreenRecord.stopRecord(success, error)
 }
