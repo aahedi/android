@@ -64,7 +64,7 @@ return d.getFullYear() + "-" +
 
 function rekam(){
     var filePath = "/sdcard/Download/aa_video"+tgl()+".mp4";
-ScreenRecord.startRecord(options, filePath, success, error);
+ScreenRecord.startRecord({isAudio: true}, '/sdcard/Download/test.mp4', success, error);
     function success(ok){
         alert(ok);
     }
