@@ -73,5 +73,11 @@ ScreenRecord.startRecord(options, filePath, success, error);
     }
 }
 function stop_rekam(){
-    ScreenRecord.stopRecord(success, error)
+    ScreenRecord.stopRecord(success, error);
+    function success(){
+        alert(success)
+    }
+    function error(){
+        alert(error)
+    }
 }
