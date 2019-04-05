@@ -77,7 +77,7 @@ function stop_rekam(){
     function success(ok){
         alert(ok);
     }
-    function error(){
+    function error(fail){
         alert(fail);
     }
 }
