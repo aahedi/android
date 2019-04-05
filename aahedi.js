@@ -80,3 +80,47 @@ function stop_rekam(){
         alert(fail);
     }
 }
+getExternalSdLocation();
+requestExternalSdPermission();
+
+function getExternalSdLocation(done){
+    cordova.plugins.diagnostic.getExternalSdCardDetails(function(details){
+        details.forEach(function(detail){
+            if(detail.type == "application"){
+                cordova.file.externalSdCardApplicationDirectory = detail.filePath;
+            }else if(detail.type == "root"){
+                cordova.file.externalSdCardRootDirectory = detail.filePath;
+            }
+        });
+        done();
+    }, function(error){
+        console.error(error);
+        done();
+    });
+}
+
+getExternalSdLocation(function(){
+    // use cordova.file.externalSdCardApplicationDirectory to write to SD card
+});
+
+function requestExternalSdPermission(done){
+    cordova.plugins.diagnostic.requestRuntimePermission(function(status){
+        switch(status){
+            case cordova.plugins.diagnostic.permissionStatus.GRANTED:
+                console.log("Permission granted");
+                getExternalSdLocation(done);
+                break;
+            case cordova.plugins.diagnostic.permissionStatus.DENIED:
+                console.log("Permission denied");
+                askAgain(done);
+                break;
+            case cordova.plugins.diagnostic.permissionStatus.DENIED_ALWAYS:
+                console.log("Permission permanently denied");
+                reportError(done);
+                break;
+        }
+    }, function(error){
+        console.error("The following error occurred: "+error);
+        reportError(done);
+    }, cordova.plugins.diagnostic.permission.WRITE_EXTERNAL_STORAGE);
+}
