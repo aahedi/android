@@ -1,0 +1,127 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget android-versionCode="20" id="com.hediherdiana.hafizquran" version="20" xmlns="http://www.w3.org/ns/widgets" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>Cinta Quran</name>
+    <description>
+        Cinta Quran Alquran Hafalan
+    </description>
+    <author email="dev@cordova.apache.org" href="http://cordova.io">
+        Hedi Herdiana
+    </author>
+    <content src="index.html" />
+    <preference name="android-build-tool" value="gradle" />
+    <preference name="AndroidPersistentFileLocation" value="Compatibility" />
+    <preference name="AndroidExtraFilesystems" value="files,cache,sdcard,cache-external,files-external,assets,root,documents" />
+	<preference name="AndroidInsecureFileModeEnabled" value="true" /> <!-- access the file:// , cookies, localstorage, localcache -->
+	<access origin="cdvfile://*" />
+    <access origin="*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+    <allow-navigation href="*" />
+	<!--<plugin name="cordova-admob-sdk-updated" spec="../plugins/cordova-admob-sdk-updated">
+    <variable name="PLAY_SERVICES_VERSION" value="20.6.0" />
+	</plugin>-->
+    <preference name="xwalkMultipleApk" value="false" />
+    <platform name="android">
+        <allow-intent href="market:*" />
+        <preference name="AndroidXEnabled" value="true" />
+        <preference name="AutoHideSplashScreen" value="true" />
+        <preference name="SplashScreenDelay" value="0" />
+        <preference name="xwalkCommandLine" value="--disable-pull-to-refresh-effect --ignore-gpu-blacklist " />
+        <preference name="android-minSdkVersion" value="22" />
+        <preference name="android-targetSdkVersion" value="33" />
+        <preference name="android-compileSdkVersion" value="33" />
+        <preference name="android-installLocation" value="auto" />
+        <preference name="Fullscreen" value="false" />
+        <preference name="Orientation" value="default" />
+        <preference name="android-signed" value="true" />
+		<preference name="CrosswalkAnimatable" value="true" />
+		<preference name="AndroidLaunchMode" value="singleInstance"/>
+        <preference name="SplashMaintainAspectRatio" value="true" />
+        <preference name="SplashShowOnlyFirstTime" value="true" />
+        <preference name="AndroidWindowSplashScreenAnimatedIcon" value="res/screen/android/splash-port-xxxhdpi.png" />
+		<preference name="AndroidWindowSplashScreenIconBackgroundColor" value="#FFFFFF" />
+
+        <icon density="ldpi" src="res/icon/android/ldpi.png" />
+        <icon density="mdpi" src="res/icon/android/mdpi.png" />
+        <icon density="hdpi" src="res/icon/android/hdpi.png" />
+        <icon density="xhdpi" src="res/icon/android/xhdpi.png" />
+        <icon density="xxhdpi" src="res/icon/android/xxhdpi.png" />
+        <icon density="xxxhdpi" src="res/icon/android/xxxhdpi.png" />
+	<!--	
+    <splash density="land-ldpi" src="res/screen/android/splash-land-ldpi.png" />
+    <splash density="land-mdpi" src="res/screen/android/splash-land-mdpi.png" />
+    <splash density="land-hdpi" src="res/screen/android/splash-land-hdpi.png" />
+    <splash density="land-xhdpi" src="res/screen/android/splash-land-xhdpi.png" />
+    <splash density="land-xxhdpi" src="res/screen/android/splash-land-xxhdpi.png" />
+    <splash density="land-xxxhdpi" src="res/screen/android/splash-land-xxxhdpi.png" />
+    <splash density="port-ldpi" src="res/screen/android/splash-port-ldpi.png" />
+    <splash density="port-mdpi" src="res/screen/android/splash-port-mdpi.png" />
+    <splash density="port-hdpi" src="res/screen/android/splash-port-hdpi.png" />
+    <splash density="port-xhdpi" src="res/screen/android/splash-port-xhdpi.png" />
+    <splash density="port-xxhdpi" src="res/screen/android/splash-port-xxhdpi.png" />
+    <splash density="port-xxxhdpi" src="res/screen/android/splash-port-xxxhdpi.png" />
+	-->
+	<!--
+		<custom-preference name="android-manifest/application/@android:isGame" value="true" />
+		<custom-preference name="android-manifest/application/activity/intent-filter/category[@android:name='android.intent.category.LEANBACK_LAUNCHER']" delete="true" />
+	-->
+	
+	<config-file target="AndroidManifest.xml" parent="/manifest">
+        <uses-permission android:name="com.google.android.gms.permission.AD_ID"/>
+		<!--<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="32" />-->
+    </config-file>
+	
+	<hook type="after_prepare" src="hooks/stripExtraWritePerm.js" />
+	
+		<edit-config file="app/src/main/AndroidManifest.xml" mode="merge" target="/manifest/application" xmlns:android="http://schemas.android.com/apk/res/android">
+            <application android:banner="@drawable/banner" />
+            <application android:isGame="true" />
+			<application android:exported="true" />
+        </edit-config>
+	
+        <resource-file src="res/banner.png" target="app/src/main/res/drawable/banner.png" />
+	
+		<!-- 1280 x 720 px -->
+		
+    </platform>
+    <platform name="ios">
+        <allow-intent href="itms:*" />
+        <allow-intent href="itms-apps:*" />
+        <preference name="AutoHideSplashScreen" value="true" />
+        <preference name="FadeSplashScreen" value="false" />
+        <preference name="FadeSplashScreenDuration" value="2" />
+        <preference name="ShowSplashScreenSpinner" value="false" />
+        <preference name="StatusBarOverlaysWebView" value="true" />
+        <preference name="StatusBarBackgroundColor" value="#000000" />
+        <preference name="StatusBarStyle" value="lightcontent" />
+        <icon height="1024" src="res/icon/ios/icon-1024.png" width="1024" />
+        <icon height="29" src="res/icon/ios/icon-small.png" width="29" />
+        <icon height="58" src="res/icon/ios/icon-small@2x.png" width="58" />
+        <icon height="87" src="res/icon/ios/icon-small@3x.png" width="87" />
+        <icon height="40" src="res/icon/ios/icon-40.png" width="40" />
+        <icon height="80" src="res/icon/ios/icon-40@2x.png" width="80" />
+        <icon height="50" src="res/icon/ios/icon-50.png" width="50" />
+        <icon height="100" src="res/icon/ios/icon-50@2x.png" width="100" />
+        <icon height="57" src="res/icon/ios/icon.png" width="57" />
+        <icon height="114" src="res/icon/ios/icon@2x.png" width="114" />
+        <icon height="60" src="res/icon/ios/icon-60.png" width="60" />
+        <icon height="120" src="res/icon/ios/icon-60@2x.png" width="120" />
+        <icon height="180" src="res/icon/ios/icon-60@3x.png" width="180" />
+        <icon height="72" src="res/icon/ios/icon-72.png" width="72" />
+        <icon height="144" src="res/icon/ios/icon-72@2x.png" width="144" />
+        <icon height="76" src="res/icon/ios/icon-76.png" width="76" />
+        <icon height="152" src="res/icon/ios/icon-76@2x.png" width="152" />
+        <icon height="167" src="res/icon/ios/icon-167.png" width="167" />
+        <icon height="167" src="res/icon/ios/icon-83.5@2x.png" width="167" />
+        <splash src="res/screen/ios/Default@2x~iphone~anyany.png" />
+        <splash src="res/screen/ios/Default@2x~iphone~comany.png" />
+        <splash src="res/screen/ios/Default@3x~iphone~anyany.png" />
+        <splash src="res/screen/ios/Default@3x~iphone~comany.png" />
+        <splash src="res/screen/ios/Default@2x~ipad~anyany.png" />
+        <splash src="res/screen/ios/Default@2x~ipad~comany.png" />
+    </platform>
+</widget>
